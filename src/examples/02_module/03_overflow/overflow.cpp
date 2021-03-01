@@ -1,5 +1,5 @@
-#include "overflow.h"
-#include <climits>
+ #include "overflow.h"
+#include<climits>
 /*
 Function int_overflow creates an int num variable with value 2147483647, 
 add 1 to it, and returns it
@@ -8,16 +8,16 @@ add 1 to it, and returns it
 */
 int int_overflow()
 {
-    auto num = 2147483647;
-    num = num + 1;
+    auto max = 2147483647;
+    max = max + 1;
 
-    return num;
+    return max;
 }
 
-double double_underflow()
+int double_underflow()
 {
-    auto closesToZeroDouble = __DBL_MIN__;
-    auto tooCloseToZeroDouble = closesToZeroDouble / 10;
+    auto ClosestToZeroDouble = __DBL_MIN__;
+   auto  TooClosestToZeroDouble = ClosestToZeroDouble / 10;
 
-    return tooCloseToZeroDouble;
+    return TooClosestToZeroDouble;
 }
