@@ -9,7 +9,7 @@ int main()
 {
 	string player;
 	string playagain = "y";
-	int position = 0;
+	int position;
 
 	while (playagain == "y" || playagain == "Y")
 	{	
@@ -21,6 +21,17 @@ int main()
 
 		game.start_game(player);
 		game.display_board();
+
+		while (!(player == "x" || player == "o"))
+		{
+			cout<<"Error! Invalid input, choose x or o only!"<<"\n";
+			cout<<"Type x or o to start the game huehuehuehue!: ";
+			cin>>player;
+			cout<<"\n";
+			game.start_game(player);
+			game.display_board();
+		}
+		
 	
 		while (game.game_over() == false)
 		{
