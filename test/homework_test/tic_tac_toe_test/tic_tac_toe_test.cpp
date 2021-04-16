@@ -64,9 +64,13 @@ TEST_CASE("Test check_colum_win with positions 1,4,7 for first player x", "shoul
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(1); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(7); //x
 
 	REQUIRE(game.game_over() == true);
@@ -78,9 +82,13 @@ TEST_CASE("Test check_colum_win with positions 2,5,8 for first player x", "shoul
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(2); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(8); //x
 
 	REQUIRE(game.game_over() == true);
@@ -92,9 +100,13 @@ TEST_CASE("Test check_colum_win with positions 3,6,9 for first player x", "shoul
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(3); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(6); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(9); //x
 
 	REQUIRE(game.game_over() == true);
@@ -106,9 +118,13 @@ TEST_CASE("Test check_row_win with positions 1,2,3 for first player x", "should 
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(1); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(7); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2); //x
 
 	REQUIRE(game.game_over() == true);
@@ -120,9 +136,13 @@ TEST_CASE("Test check_row_win with positions 4,5,6 for first player x", "should 
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(4); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(8); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(6); //x
 
 	REQUIRE(game.game_over() == true);
@@ -134,9 +154,13 @@ TEST_CASE("Test check_row_win with positions 7,8,9 for first player x", "should 
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(7); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(8); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(1); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(9); //x
 
 	REQUIRE(game.game_over() == true);
@@ -148,9 +172,13 @@ TEST_CASE("Test check_diagonal_win with positions 1,5,9 for first player x", "sh
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(1); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(9); //x
 
 	REQUIRE(game.game_over() == true);
@@ -162,9 +190,13 @@ TEST_CASE("Test check_diagonal_win with positions 7,5,3 for first player x", "sh
 	tiktaktoeGame game;
 	game.start_game("x");
 	game.mark_board(7); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(2); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(5); //x
+	REQUIRE(game.game_over() == false);
 	game.mark_board(4); //o
+	REQUIRE(game.game_over() == false);
 	game.mark_board(3); //x
 
 	REQUIRE(game.game_over() == true);
