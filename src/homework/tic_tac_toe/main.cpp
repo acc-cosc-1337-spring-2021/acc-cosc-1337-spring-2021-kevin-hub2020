@@ -1,26 +1,29 @@
 #include"tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include<iostream>
 
-using std::cin;
 using std::cout;
-using std::string;
+using std::cin;
+//using std::string;
 
 int main() 
 {
 	string player;
+	TicTacToeManager manager;
 	string playagain = "y";
-	int position;
+	int x = 0;
+	int o = 0;
+	int ties = 0;
 
 	while (playagain == "y" || playagain == "Y")
 	{	
 		tiktaktoeGame game;
+		cout<<"\n";
 		cout<<"You are challenged to a tic tac toe game, there's no other choice but to win...\n";
 		cout<<"Type x or o to start the game huehuehuehue!: ";
 		cin>>player;
-		cout<<"\n";
 
 		game.start_game(player);
-		game.display_board();
 
 		while (!(player == "x" || player == "o"))
 		{
@@ -29,34 +32,40 @@ int main()
 			cin>>player;
 			cout<<"\n";
 			game.start_game(player);
-			game.display_board();
-		}
-		
-	
-		while (game.game_over() == false)
-		{
-			cout<<"\nYour turn "<<game.get_player()<<"! Choose a free slot on the board using numbers from 1-9: ";
-			cin>>position;
-			cout<<"\n";
-			while (position < 1 || position > 9)
-			{
-				cout<<"Invalid input! Please try again, Choose a free slot on the board using numbers from 1-9: ";
-				cin>>position;
-				cout<<"\n";
-			}
-			game.mark_board(position);
-			game.display_board();
 		}
 
-		if (game.get_winner() == "C")
+
+		do
 		{
-			cout<<"Game ended in a TIE~!";
+			cin>>game;
+			cout<<game;
+		}
+		while(game.game_over() == false);
+
+		if (game.get_winner() == "x")
+		{
+			x = x + 1;
+		}
+
+		if (game.get_winner() == "o")
+		{
+			o = o + 1;
+		}
+
+		else if (game.get_winner() == "C")
+		{
+			ties = ties + 1;
+			cout<<"Game ended in a TIE~!\n";
 		}
 		else
-		cout<<"\nGame Over! The winner is "<<game.get_winner()<<"!";
+		cout<<"\nGame Over! The winner is "<<game.get_winner()<<"!\n";
+		manager.save_game(game);
+		cout<<"\n";
+		manager.get_winner_total(x,o,ties);
 		cout<<"\nPlay again? y/Y = yes, anything else = no: ";
 		cin>>playagain;
 		cout<<"\n";
+		cout<<manager;
 	}
 
 	return 0;

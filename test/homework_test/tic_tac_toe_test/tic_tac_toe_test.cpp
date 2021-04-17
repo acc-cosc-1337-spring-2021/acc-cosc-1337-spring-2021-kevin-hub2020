@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
@@ -74,6 +75,7 @@ TEST_CASE("Test check_colum_win with positions 1,4,7 for first player x", "shoul
 	game.mark_board(7); //x
 
 	REQUIRE(game.game_over() == true);
+	REQUIRE(game.get_winner() == "x");
 }
 
 //Test win by second column
@@ -201,3 +203,5 @@ TEST_CASE("Test check_diagonal_win with positions 7,5,3 for first player x", "sh
 
 	REQUIRE(game.game_over() == true);
 }
+
+TEST_CASE("Test get_winner_")

@@ -4,6 +4,35 @@
 
 using std::cout;
 
+
+std::ostream& operator<<(std::ostream& out, const tiktaktoeGame& game)
+{
+    cout<<game.pegs[0]<<" | "<<game.pegs[1]<<" | "<<game.pegs[2]<<"\n";
+    cout<<"--+---+--"<<"\n";
+    cout<<game.pegs[3]<<" | "<<game.pegs[4]<<" | "<<game.pegs[5]<<"\n";
+    cout<<"--+---+--"<<"\n";
+    cout<<game.pegs[6]<<" | "<<game.pegs[7]<<" | "<<game.pegs[8]<<"\n";
+    return out;
+}
+
+std::istream& operator>>(std::istream& in, tiktaktoeGame& game)
+{
+    int position;
+    cout<<"\nYour turn "<<game.get_player()<<"! Choose a free slot on the board using numbers from 1-9: ";
+	cin>>position;
+	cout<<"\n";
+    if (position < 1 || position > 9)
+    {
+        cout<<"Invalid input! Please try again, Choose a free slot on the board using numbers from 1-9: ";
+		cin>>position;
+		cout<<"\n";
+    }
+    game.mark_board(position);
+    return in;
+}
+
+
+
 bool tiktaktoeGame::game_over()
 {
     if (check_column_win() == true)
@@ -46,15 +75,6 @@ string tiktaktoeGame::get_player()const
     return player;
 }
 
-void tiktaktoeGame::display_board()const
-{
-    cout<<pegs[0]<<" | "<<pegs[1]<<" | "<<pegs[2]<<"\n";
-    cout<<"--+---+--"<<"\n";
-    cout<<pegs[3]<<" | "<<pegs[4]<<" | "<<pegs[5]<<"\n";
-    cout<<"--+---+--"<<"\n";
-    cout<<pegs[6]<<" | "<<pegs[7]<<" | "<<pegs[8]<<"\n";    
-}
-
 string tiktaktoeGame::get_winner()
 {
     return winner;
@@ -62,42 +82,34 @@ string tiktaktoeGame::get_winner()
 
 bool tiktaktoeGame::check_column_win()
 {
-    ////bool win = false;
-
     //player x
     if (pegs[0] == "x" && pegs[3] == "x" && pegs[6] == "x")
     {
-        ////win = true;
         return true;
     }
     //player o
     if (pegs[0] == "o" && pegs[3] == "o" && pegs[6] == "o")
     {
-       // //win = true;
         return true;
     }
     //player x
     if (pegs[1] == "x" && pegs[4] == "x" && pegs[7] == "x")
     {
-        ////win = true;
         return true;
     }
     //player o
     if (pegs[1] == "o" && pegs[4] == "o" && pegs[7] == "o")
     {
-       // //win = true;
         return true;
     }
     //player x
     if (pegs[2] == "x" && pegs[5] == "x" && pegs[8] == "x")
     {
-        ////win = true;
         return true;
     }
     //player o
     if (pegs[2] == "o" && pegs[5] == "o" && pegs[8] == "o")
     {
-        ////win = true;
         return true;
     }
     return false;
@@ -105,42 +117,34 @@ bool tiktaktoeGame::check_column_win()
 
 bool tiktaktoeGame::check_row_win()
 {
-    //bool win = false;
-
     //player x
     if (pegs[0] == "x" && pegs[1] == "x" && pegs[2] == "x")
     {
-        //win = true;
         return true;
     }
     //player o
     if (pegs[0] == "o" && pegs[1] == "o" && pegs[2] == "o")
     {
-        //win = true;
         return true;
     }
     //player x
     if (pegs[3] == "x" && pegs[4] == "x" && pegs[5] == "x")
     {
-        //win = true;
         return true;
     }
     //player o
     if (pegs[3] == "o" && pegs[4] == "o" && pegs[5] == "o")
     {
-        //win = true;
         return true;
     }
     //player x
     if (pegs[6] == "x" && pegs[7] == "x" && pegs[8] == "x")
     {
-        //win = true;
         return true;
     }
     //player o
     if (pegs[6] == "o" && pegs[7] == "o" && pegs[8] == "o")
     {
-        //win = true;
         return true;
     }
     return false;
@@ -148,30 +152,24 @@ bool tiktaktoeGame::check_row_win()
 
 bool tiktaktoeGame::check_diagonal_win()
 {
-    //bool win = false;
-
     //player x
     if (pegs[0] == "x" && pegs[4] == "x" && pegs[8] == "x")
     {
-        //win = true;
         return true;
     }
     //player o
     if (pegs[0] == "o" && pegs[4] == "o" && pegs[8] == "o")
     {
-        //win = true;
         return true;
     }
     //player x
     if (pegs[2] == "x" && pegs[4] == "x" && pegs[6] == "x")
     {
-        //win = true;
         return true;
     }
     //player o
     if (pegs[2] == "o" && pegs[4] == "o" && pegs[6] == "o")
     {
-        //win = true;
         return true;
     }
 
