@@ -22,16 +22,13 @@ void TicTacToeManager::save_game(tiktaktoeGame b)
 
 void TicTacToeManager::get_winner_total(int& x, int& o, int& t)
 {    
-    cout<<"X wins: "<<x<<"\n";
-    cout<<"O wins: "<<o<<"\n";
-    cout<<"Ties: "<<t<<"\n";
+    x = x_win;
+    o = o_win;
+    t = ties;
 }
 
 void TicTacToeManager::update_winner_count(string winner)
 {
-    x_win = 0;
-    o_win = 0;
-    ties = 0;
     if (winner == "x")
     {
         x_win +=1;

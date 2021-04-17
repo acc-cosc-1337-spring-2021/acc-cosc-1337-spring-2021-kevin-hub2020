@@ -59,6 +59,9 @@ int main()
 		}
 		else
 		cout<<"\nGame Over! The winner is "<<game.get_winner()<<"!\n";
+		cout<<"\nX wins: "<<x<<"\n";
+		cout<<"O wins: "<<o<<"\n";
+		cout<<"Ties: "<<ties<<"\n";
 		manager.save_game(game);
 		cout<<"\n";
 		manager.get_winner_total(x,o,ties);
