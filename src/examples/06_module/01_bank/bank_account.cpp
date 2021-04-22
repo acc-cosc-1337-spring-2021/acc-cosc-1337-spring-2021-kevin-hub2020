@@ -1,10 +1,16 @@
 //bank_account.cpp
 #include "bank_account.h"
 
+void BranchBank::update_balance(int b)
+{
+    branch_balance += b;
+    BankAccount::bank_balance += b;
+}
+
 int BankAccount::get_balance()const
 {
     return balance;
-} 
+}
 
 void BankAccount::deposit(int amount)
 { 
@@ -21,57 +27,48 @@ void BankAccount::withdraw(int amount)
     {
         balance -= amount;
         bank_balance -= amount;
-    }        
+    }
 }
 
-int BankAccount::bank_balance = 0;
+int BankAccount::bank_balance = 0;//initialize static variable
 
-//FRIEND FREE FUNCTION
+//FRIEND FUNCTION it is a free function
 void friend_display_balance(const BankAccount& account)
 {
-    std::cout<<"Friend Display balance: "<<account.balance<<"\n";
+    std::cout<<"Friend Display Account - Balance is: "<<account.balance<<"\n";
 }
 
-std::ostream& operator<<(std::ostream& out, const BankAccount& account)
+std::ostream& operator<<(std::ostream& out, const BankAccount& a)
 {
-    out<<"Overloaded ostream Display balance: "<<account.balance<<"\n"; 
+    out<<"cout Overload Display Account - Balance is: "<<a.balance<<"\n";
 
-    return out;   
+    return out;
 }
 
-std::istream& operator>>(std::istream& in, BankAccount& account)
-{
-    int amount = 0;
+ std::istream& operator>>(std::istream& in, BankAccount& a)
+ {
+    int amount;
     std::cout<<"Enter amount: ";
     in>>amount;
-    account.balance += amount;
+    a.balance += amount;
 
-    return in; 
-}
+    return in;
+ }
 
-// BankAccount operator+(const BankAccount& a1, const BankAccount& a2)
-// {
-//     BankAccount account(a1.balance + a2.balance);
-//     return account;
-// }
-
-//FREE FUNCTIONS NOT PART OF THE BANK ACCOUNT CLASS!!!!!!
-void display_balance(const BankAccount& account)
+/*BankAccount operator+(const BankAccount& a1, const BankAccount& a2)
 {
-    std::cout<<"Display balance: "<<account.get_balance()<<"\n";
-}
+    BankAccount account(a1.balance + a2.balance);
+    return account;
+}*/
 
-// BankAccount get_account(int balance)
-// {
-//     BankAccount account(balance);
-
-//     return account;
-// }
-
-
-//======branch bank class
-void BranchBank::update_balance(int b)
+//FREE FUNCTIONS DEFINITIONS
+void display_account(const BankAccount& account)
 {
-    branch_balance += b;
-    BankAccount::bank_balance += b;
+    std::cout<<"Display Account--Balance is: "<<account.get_balance()<<"\n";
 }
+
+/*BankAccount get_account(int amount)
+{
+    BankAccount account(amount);
+    return account;
+}*/
