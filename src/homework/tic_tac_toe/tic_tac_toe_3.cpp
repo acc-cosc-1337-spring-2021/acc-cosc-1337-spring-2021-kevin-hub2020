@@ -10,6 +10,40 @@ else
 false
 */
 
+bool tiktaktoeGame3::check_column_win()
+{
+    //player x
+    if (pegs[0] == "x" && pegs[3] == "x" && pegs[6] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[0] == "o" && pegs[3] == "o" && pegs[6] == "o")
+    {
+        return true;
+    }
+    //player x
+    if (pegs[1] == "x" && pegs[4] == "x" && pegs[7] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[1] == "o" && pegs[4] == "o" && pegs[7] == "o")
+    {
+        return true;
+    }
+    //player x
+    if (pegs[2] == "x" && pegs[5] == "x" && pegs[8] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[2] == "o" && pegs[5] == "o" && pegs[8] == "o")
+    {
+        return true;
+    }
+    return false;
+}
 
 
 /*
@@ -20,6 +54,40 @@ Win by row if
 6,7,8 are equal
 */
 
+bool tiktaktoeGame3::check_row_win()
+{
+    //player x
+    if (pegs[0] == "x" && pegs[1] == "x" && pegs[2] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[0] == "o" && pegs[1] == "o" && pegs[2] == "o")
+    {
+        return true;
+    }
+    //player x
+    if (pegs[3] == "x" && pegs[4] == "x" && pegs[5] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[3] == "o" && pegs[4] == "o" && pegs[5] == "o")
+    {
+        return true;
+    }
+    //player x
+    if (pegs[6] == "x" && pegs[7] == "x" && pegs[8] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[6] == "o" && pegs[7] == "o" && pegs[8] == "o")
+    {
+        return true;
+    }
+    return false;
+}
 
 
 /*
@@ -30,3 +98,29 @@ Win diagonally
 6 7 8
 
 */
+
+bool tiktaktoeGame3::check_diagonal_win()
+{
+    //player x
+    if (pegs[0] == "x" && pegs[4] == "x" && pegs[8] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[0] == "o" && pegs[4] == "o" && pegs[8] == "o")
+    {
+        return true;
+    }
+    //player x
+    if (pegs[2] == "x" && pegs[4] == "x" && pegs[6] == "x")
+    {
+        return true;
+    }
+    //player o
+    if (pegs[2] == "o" && pegs[4] == "o" && pegs[6] == "o")
+    {
+        return true;
+    }
+
+    return false;
+}

@@ -1,11 +1,12 @@
 //cpp
 #include "tic_tac_toe_manager.h"
+#include<iostream>
 
 std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 {
-    for (auto game: manager.games)
+    for (auto& game : manager.games)
     {
-        out<<game<<"\n";
+        out<< *game<<"\n";
     }
     out<<"X wins: "<<manager.x_win<<"\n";
     out<<"O wins: "<<manager.o_win<<"\n";
@@ -14,10 +15,10 @@ std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
     return out;
 }
 
-void TicTacToeManager::save_game(tiktaktoeGame b)
+void TicTacToeManager::save_game(unique_ptr<tiktaktoeGame> &b)
 {
-    games.push_back(b);
-    update_winner_count(b.get_winner());
+    update_winner_count(b -> get_winner());
+    games.push_back(std::move(b));
 }
 
 void TicTacToeManager::get_winner_total(int& x, int& o, int& t)
