@@ -7,11 +7,12 @@ class tiktaktoeGame4 : public tiktaktoeGame
 {
 public:
     tiktaktoeGame4() : tiktaktoeGame(4){}
+    tiktaktoeGame4(std::vector<string> p, std::string winner): tiktaktoeGame(p, winner){}
 
 private:
-    bool check_column_win();
-    bool check_row_win();
-    bool check_diagonal_win();
+    bool check_column_win() override;
+    bool check_row_win() override;
+    bool check_diagonal_win() override;
 };
 
 #endif

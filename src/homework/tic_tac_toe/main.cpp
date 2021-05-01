@@ -14,7 +14,8 @@ using std::make_unique;
 int main() 
 {
 	string player;
-	TicTacToeManager manager;
+	TicTacToeData data;
+	TicTacToeManager manager = TicTacToeManager(data);
 	string playagain;
 	int x = 0;
 	int o = 0;
